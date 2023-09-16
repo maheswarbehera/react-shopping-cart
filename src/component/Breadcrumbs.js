@@ -16,7 +16,7 @@ export default function Breadcrumb(props) {
         <li>
           <div className="flex items-center">
             <ChevronRight className="h-4 w-4" />
-            <a href='#' className="ml-1 text-sm font-medium text-gray-800 hover:underline md:ml-2">
+            <a href={props.child} className="ml-1 text-sm font-medium text-gray-800 hover:underline md:ml-2">
               {props.child}
             </a>
           </div>
@@ -24,7 +24,7 @@ export default function Breadcrumb(props) {
         <li>
           <div className="flex items-center">
             <ChevronRight className="h-4 w-4" />
-            <a href="#" className="ml-1 text-sm font-medium text-gray-800 hover:underline md:ml-2">
+            <a href={props.child2} className="ml-1 text-sm font-medium text-gray-800 hover:underline md:ml-2">
               {props.child2}
             </a>
           </div>

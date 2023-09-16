@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import ForgotPassword from './component/auth/ForgotPassword';
 import Login from './component/auth/Login';
@@ -12,32 +12,74 @@ import Contact from './component/Contact';
 import Top from './component/Top';
 import ProductList from './component/Product/ProductList';
 import ProductDetail from './component/Product/ProductDetail'; 
-import Cart from './component/Cart/Cart'; 
+import Cart from './component/Cart/Cart';  
+import { useState } from 'react';
 
 function App() {
+ 
+	const [cart , setCart] = useState([]);
+
+	// const addToCart = (item)=>{
+
+  //   console.log(item);
+	// 	setCart([...cart, item]);
+  //   console.log(cart);
+	// }
+  const navigate = useNavigate()
+
+  const addToCart = (product, redirect)=> {
+    console.log(product);
+
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const isProductExists = cart.find(item => item.id === product.id) 
+
+    if(isProductExists) {
+      const updateCart = cart.map(item => {
+        if(item.id === product.id) {
+          return {
+            ...item,
+            quantity: item.quantity + 1
+          }
+        }
+        return item;
+      })
+      localStorage.setItem('cart', JSON.stringify(updateCart))
+    }
+    else{
+      localStorage.setItem('cart', JSON.stringify([...cart, {...product, quantity: 1}]))
+    }
+    alert( product.title +" Added To Cart Successfully")
+    if(redirect) {
+      navigate('/cart')
+    }
+    setCart([...cart, product]);
+}
+	
+  
   return (
     
     <div className="App">
       <header className="App-header">
-        <Top/>
+        <Top size={cart.length}/>
         </header> 
         <Routes> 
         {/* <Switch> */}
-          <Route path="*" Component={PageNotFound}/>
-          <Route path="/" Component={Home}/>
-          <Route path="/signup" Component={SignUp}/>
-          <Route path='/login' Component={Login}/> 
-          <Route path='/forgotpassword' Component={ForgotPassword}/>
-          <Route path='/dashboard' Component={Dashboard}/>
-          <Route path='/about' Component={About}/>
-          <Route path='/contact' Component={Contact}/>
-          <Route path='/products' Component={ProductList}/>
-          <Route path="/product/:id" element={<ProductDetail/>} />
-          <Route path="/cart" element={<Cart/>} />
+        <Route path="/" element={<Home />} />
+        <Route path="*" Component={PageNotFound}/>
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/products" element={<ProductList addToCart={addToCart}/>}  />
+        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/cart" element={<Cart  />}  />
           {/* </Switch> */}
-        </Routes> 
+        </Routes>  
 
         <Footer/>
+       
     </div>
   );
 }
