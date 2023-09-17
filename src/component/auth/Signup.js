@@ -21,7 +21,7 @@ const SignUp = () => {
         signOut(auth);
         alert("Register successful");
       // Redirect the user to the desired page upon successful sign-up
-
+      navigate("/dashboard");
       console.log("Register successful");
     } catch (error) {
       alert(`${error?.message}`)
@@ -59,21 +59,7 @@ const SignUp = () => {
             </Link>
           </p>
           <form action="#" method="POST" className="mt-8">
-            <div className="space-y-5">
-              {/* <div>
-                <label htmlFor="name" className="text-base font-medium text-gray-900">
-                  {' '}
-                  Full Name{' '}
-                </label>
-                <div className="mt-2">
-                  <input
-                    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                    type="text"
-                    placeholder="Full Name"
-                    id="name"
-                  ></input>
-                </div>
-              </div> */}
+            <div className="space-y-5"> 
               <div>
                 <label htmlFor="email" className="text-base font-medium text-gray-900">
                   {' '}
@@ -146,19 +132,3 @@ const SignUp = () => {
 
 export default SignUp;
 
-// <div>
-//       <h2>Sign Up</h2>
-//       <input
-//         type="email"
-//         placeholder="Email"
-//         value={email}
-//         onChange={(e) => setEmail(e.target.value)}
-//       />
-//       <input
-//         type="password"
-//         placeholder="Password"
-//         value={password}
-//         onChange={(e) => setPassword(e.target.value)}
-//       />
-//       <button onClick={handleSignUp}>Sign Up</button>
-//     </div> 

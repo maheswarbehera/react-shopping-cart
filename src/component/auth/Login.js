@@ -128,23 +128,3 @@ const Login = () => {
 };
 
 export default Login;
-
-//<div>
-// <h2>Login</h2>
-// <input
-//   type="email"
-//   placeholder="Email"
-//   value={email}
-//   onChange={(e) => setEmail(e.target.value)}
-// />
-// <input
-//   type="password"
-//   placeholder="Password"
-//   value={password}
-//   onChange={(e) => setPassword(e.target.value)}
-// />
-// <button onClick={handleLogin}>Log In</button>
-// <button onClick={LoginWithGoogle} className="btn google btn-primary w-100 gap-2 d-flex justify-content-center">
-//         Continue With Google &rarr;
-//       </button>
-// </div> 

@@ -76,15 +76,3 @@ const ForgotPassword = () => {
 };
 
 export default ForgotPassword;
-
-// <div>
-//       <h2>Forgot Password</h2>
-//       <input
-//         type="email"
-//         placeholder="Email"
-//         value={email}
-//         onChange={(e) => setEmail(e.target.value)}
-//       />
-//       <button onClick={handleResetPassword}>Reset Password</button>
-//       <p>{message}</p>
-//     </div> 
