@@ -23,16 +23,16 @@ export default function Footer() {
             </button>
           </form>
         </div>
-        <div className="mt-8 grid grid-cols-2 gap-6 md:mt-0 lg:w-3/4 lg:grid-cols-3">
-          {Array.from({ length: 3 }).map((_, i) => (
+        <div className="mt-8 grid grid-cols-2 gap-6 md:mt-0 lg:w-3/4 lg:grid-cols-2 text-center">
+          {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="mb-8 lg:mb-0">
               <p className="mb-6 text-lg font-semibold text-gray-700 ">Company</p>
               <ul className="flex flex-col space-y-4 text-[14px] font-medium text-gray-500">
                 <li>About us</li>
+                <li>Delivery & Returns</li>
                 <li>Company History</li>
                 <li>Our Team</li>
                 <li>Our Vision</li>
-                <li>Press Release</li>
               </ul>
             </div>
           ))}

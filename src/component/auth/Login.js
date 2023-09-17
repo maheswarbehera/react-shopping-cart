@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { auth } from '../../Config/Firebase';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react'
 import logo from '../../assets/images/ecommerce-logo-free-png.webp'
 
@@ -45,13 +45,13 @@ const Login = () => {
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600 ">
             Don&apos;t have an account?{' '}
-            <a
-              href="/signup"
+            <Link
+              to="/signup"
               title=""
               className="font-semibold text-black transition-all duration-200 hover:underline"
             >
               Create a free account
-            </a>
+            </Link>
           </p>
           <form action="#" method="POST" className="mt-8">
             <div className="space-y-5">
@@ -76,10 +76,10 @@ const Login = () => {
                     {' '}
                     Password{' '}
                   </label>
-                  <a href="/forgotpassword" title="" className="text-sm font-semibold text-black hover:underline">
+                  <Link to="/forgotpassword" title="" className="text-sm font-semibold text-black hover:underline">
                     {' '}
                     Forgot password?{' '}
-                  </a>
+                  </Link>
                 </div>
                 <div className="mt-2">
                   <input

@@ -14,6 +14,7 @@ import ProductList from './component/Product/ProductList';
 import ProductDetail from './component/Product/ProductDetail'; 
 import Cart from './component/Cart/Cart';  
 import { useState } from 'react';
+import Checkout from './component/Cart/Checkout';
 
 function App() {
  
@@ -75,6 +76,7 @@ function App() {
         <Route path="/products" element={<ProductList addToCart={addToCart}/>}  />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart  />}  />
+        <Route path="/checkout" element={<Checkout  />}  />
           {/* </Switch> */}
         </Routes>  
 

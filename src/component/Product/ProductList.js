@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Breadcrumb from '../Breadcrumbs';
 import Loading from '../Loading'; 
 
@@ -9,7 +9,7 @@ function ProductList({addToCart}) {
     const [products,setProducts] = useState([]);
     const [loading,setLoading] = useState(true);
    
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     useEffect(() => {
       axios.get('https://fakestoreapi.com/products')
@@ -61,7 +61,15 @@ function ProductList({addToCart}) {
     return (
       <>
   <div className="mx-auto max-w-7xl px-4">
-  <Breadcrumb parent='Home' child='Products'/></div>
+  <Breadcrumb parent='Home' child='Products'/>
+  </div>
+  <div className="text-center py-5">
+      <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4 uppercase">Featured Products</h1>
+      <p className="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500s">New In Pre-Loved</p>
+      <div className="flex mt-6 justify-center">
+        <div className="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+      </div>
+    </div>
   <div className="mx-auto grid w-full max-w-7xl products-center space-y-4 px-2 py-10 md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-4">
   {products && products.length>0 && products.map((product,id) => (
     <div key={id} className="rounded-md border">
@@ -74,7 +82,7 @@ function ProductList({addToCart}) {
         <h1 className="inline-flex products-center text-lg font-semibold">    
           <Link to={`/product/${product.id}`}>{product.title}</Link></h1>
         <p className="text-gray-500 text-lg font-semibold">${product.price.toFixed(2)} <span className="font-segoe pl-2 text-sm text-gray-400 line-through md:text-base lg:text-lg xl:text-xl">
-              {product.price.toFixed(2) + 20}
+              {(product.price + 20).toFixed(2)}
               </span></p>
         {/* <p>{'Rating : '+product.rating.rate} of 5</p> */}
         

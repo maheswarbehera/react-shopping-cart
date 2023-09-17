@@ -3,6 +3,7 @@ import { auth } from '../../Config/Firebase';
 import { ArrowRight } from 'lucide-react'
 import logo from '../../assets/images/ecommerce-logo-free-png.webp'
 import { sendPasswordResetEmail } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -29,13 +30,13 @@ const ForgotPassword = () => {
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600 ">
           Don&apos;t have an account?{' '}
-          <a
-            href="/signup"
+          <Link
+            to="/signup"
             title=""
             className="font-semibold text-black transition-all duration-200 hover:underline"
           >
             Create a free account
-          </a>
+          </Link>
         </p>
         <form action="#" method="POST" className="mt-8">
           <div className="space-y-5">

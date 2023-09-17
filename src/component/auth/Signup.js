@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { auth } from '../../Config/Firebase';
 import { ArrowRight } from 'lucide-react'
 import { createUserWithEmailAndPassword, signOut, updateProfile, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/ecommerce-logo-free-png.webp'
 
 const SignUp = () => {
@@ -50,13 +50,13 @@ const SignUp = () => {
           </h2>
           <p className="mt-2 text-center text-base text-gray-600">
             Already have an account?{' '}
-            <a
-              href="/login"
+            <Link
+              to="/login"
               title=""
               className="font-medium text-black transition-all duration-200 hover:underline"
             >
               Sign In
-            </a>
+            </Link>
           </p>
           <form action="#" method="POST" className="mt-8">
             <div className="space-y-5">

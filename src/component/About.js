@@ -1,23 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Menu, X, MapPin } from 'lucide-react'
+import { MapPin } from 'lucide-react'
 import Breadcrumb from './Breadcrumbs'
 
-const menuItems = [
-  {
-    name: 'Home',
-    href: '#',
-  },
-  {
-    name: 'About',
-    href: '#',
-  },
-  {
-    name: 'Contact',
-    href: '#',
-  },
-]
 
 const locations = [
   {
@@ -89,11 +75,11 @@ const users = [
 ]
 
 export default function About() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false)
+  // const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+  // const toggleMenu = () => {
+  //   setIsMenuOpen(!isMenuOpen) 
+  // }
 
   return (
     <>
@@ -154,7 +140,7 @@ export default function About() {
         {/* TEAM */}
         <div className="grid grid-cols-1 gap-4 gap-y-6 border-b border-gray-300 py-12 pb-20 md:grid-cols-2 lg:grid-cols-4">
           {users.map((user) => (
-            <div className="rounded-md border" key={user.name}>
+            <div className="rounded-md border" key={user.id}>
               <img
                 src={user.image}
                 alt={user.name}
