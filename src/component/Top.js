@@ -1,8 +1,10 @@
 import logo from '../assets/images/ecommerce-logo-free-png.webp'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline' 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from '../Config/Firebase'
 
 const navigation = {
   categories: [
@@ -132,8 +134,25 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Top({size}) {
+export default function Top(props) {
   const [open, setOpen] = useState(false)
+
+  const navigate = useNavigate()
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        document.getElementById('logout').style.display = 'inline'
+        document.getElementById('login').style.display = 'none'
+      }
+    })
+  })
+
+  const handleOnLogout = async () => {
+    await auth.signOut()
+    document.getElementById('logout').style.display = 'none'
+    document.getElementById('login').style.display = 'inline'
+    navigate('/')
+  }
 
   return (
     <div className="bg-white">
@@ -399,17 +418,19 @@ export default function Top({size}) {
               </Popover.Group>
 
               <div className="ml-auto flex items-center">
-                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6" id="login">
                   <Link to="/login" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Sign in
+                  {props.login}
                   </Link>
                   <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                   <Link to="signup" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Create account
+                  {props.signup}
                   </Link>
                 </div>
+                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6" id="logout" style={{ display: "none" }}>
+                  <button onClick={handleOnLogout} title="Logout" className="rotate-180 text-gray-800 transition-colors duration-200 hover:text-gray-900" fdprocessedid="tp0b68"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" x2="3" y1="12" y2="12"></line></svg></button>
+                </div>
 
-                 
 
                 {/* Search */}
                 <div className="flex lg:ml-6">
@@ -419,7 +440,7 @@ export default function Top({size}) {
                   </Link>
                 </div>
 
-                {/* Cart */}
+                {/* Cart */} 
                 <div className="ml-4 flow-root lg:ml-6">
                   <Link to="/cart" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
@@ -427,7 +448,7 @@ export default function Top({size}) {
                       aria-hidden="true"
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                    {size}
+                    {props.size}
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
                   </Link>

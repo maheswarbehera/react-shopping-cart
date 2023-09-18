@@ -61,7 +61,8 @@ function App() {
     
     <div className="App">
       <header className="App-header">
-        <Top size={cart.length}/>
+        <Top login='Login' signup='Create Account'  size={cart.length}/>
+          
         </header> 
         <Routes> 
         {/* <Switch> */}
@@ -76,7 +77,7 @@ function App() {
         <Route path="/products" element={<ProductList addToCart={addToCart}/>}  />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart  />}  />
-        <Route path="/checkout" element={<Checkout  />}  />
+        <Route path="/checkout" element={<Checkout  />}  /> 
           {/* </Switch> */}
         </Routes>  
 
