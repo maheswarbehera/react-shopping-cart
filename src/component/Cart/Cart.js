@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'; 
 import { Link, useNavigate } from 'react-router-dom';
 import Breadcrumb from '../Breadcrumbs';
+import Loading from '../Loading';
 
 const Cart = () => {
 
   const [total, setTotal] = useState(0);
   const navigate = useNavigate() 
+  const [loading,setLoading] = useState(true);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const carts = JSON.parse(localStorage.getItem('cart')) || []
@@ -15,6 +17,7 @@ const Cart = () => {
       return acc + (item.price * item.quantity)
     },0)
     setTotal(total)
+    setLoading(false)
   },[carts])
 
   const handleDec = (id)=>{
@@ -56,6 +59,13 @@ const Cart = () => {
   //     console.log("check out")
   //     alert("Thank You For Shopping from Online Shop, Visit Again...")
   // }
+
+  if (loading) {
+    return (<>
+    <Loading/>
+    </>
+    )
+  }
 
   if(carts.length === 0) {
     return (
