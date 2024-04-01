@@ -23,13 +23,15 @@ const Cart = () => {
   const handleDec = (id)=>{
     const updateCart = carts.map(item => {
       console.log('item id - ', item.id);
-      console.log('id - ',id);
-      if(item.id === id){
-        return {
-          ...item ,
-           quantity: item.quantity - 1
+      console.log('id - ',id); 
+      if(item.quantity > 1){ 
+        if(item.id === id){
+          return {
+            ...item ,
+            quantity: item.quantity - 1 
+          }
         }
-      }
+      } 
       return item;
     })
     localStorage.setItem('cart', JSON.stringify(updateCart))
