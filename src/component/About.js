@@ -80,13 +80,15 @@ export default function About() {
   // const toggleMenu = () => {
   //   setIsMenuOpen(!isMenuOpen) 
   // }
-
+  const breadcrumbs = [
+    { title: 'About', url: '/about' }
+  ];
   return (
     <>
     <div>
        <div className='rounded-lg bg-gray-100'>
       <div className="mx-auto max-w-7xl px-4">
-    <Breadcrumb parent='Home' child='About'/>
+    <Breadcrumb title='Home' url='/' breadcrumbs={breadcrumbs}/>
          {/* Hero Map */}
          <div className="flex flex-col space-y-8 pb-10 pt-12 md:pt-24">
           <div className="max-w-max rounded-full border bg-gray-50 p-1 px-3">
@@ -139,8 +141,8 @@ export default function About() {
         </div>
         {/* TEAM */}
         <div className="grid grid-cols-1 gap-4 gap-y-6 border-b border-gray-300 py-12 pb-20 md:grid-cols-2 lg:grid-cols-4">
-          {users.map((user) => (
-            <div className="rounded-md border" key={user.id}>
+          {users.map((user,id) => (
+            <div className="rounded-md border" key={id}>
               <img
                 src={user.image}
                 alt={user.name}

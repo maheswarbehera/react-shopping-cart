@@ -5,6 +5,9 @@ import Breadcrumb from '../Breadcrumbs';
 import Loading from '../Loading'; 
 
 function ProductList({addToCart}) {
+  const breadcrumbs = [
+    { title: 'Product', url: '/products' }
+  ];
 
     const [products,setProducts] = useState([]);
     const [loading,setLoading] = useState(true);
@@ -61,7 +64,7 @@ function ProductList({addToCart}) {
     return (
       <>
   <div className="mx-auto max-w-7xl px-4">
-  <Breadcrumb parent='Home' child='Products'/>
+  <Breadcrumb title='Home' url='/' breadcrumbs={breadcrumbs}/>
   </div>
   <div className="text-center py-5">
       <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4 uppercase">Featured Products</h1>

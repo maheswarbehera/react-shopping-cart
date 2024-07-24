@@ -22,12 +22,14 @@ const locations = [
 ]
 
 export default function Contact() {
- 
+  const breadcrumbs = [
+    { title: 'Contact', url: '/contact' }
+  ];
 
   return (
     <div>
       <div className="mx-auto max-w-7xl px-4">
-      <Breadcrumb parent='Home' child='Contact'/>
+      <Breadcrumb title='Home' url='/' breadcrumbs={breadcrumbs}/>
         <div className="mx-auto max-w-7xl py-12 md:py-24">
           <div className="grid items-center justify-items-center gap-x-4 gap-y-10 lg:grid-cols-2">
             {/* contact from */}

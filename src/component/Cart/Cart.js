@@ -4,7 +4,10 @@ import Breadcrumb from '../Breadcrumbs';
 import Loading from '../Loading';
 
 const Cart = () => {
-
+  const breadcrumbs = [
+    // {title: 'Home', url: '/'},
+    {title: 'Cart', url: '/cart'}
+  ]
   const [total, setTotal] = useState(0);
   const navigate = useNavigate() 
   const [loading,setLoading] = useState(true);
@@ -77,7 +80,7 @@ const Cart = () => {
        <div className='rounded-lg bg-slate-100 pb-5'>
     <div className="mx-auto max-w-7xl px-4">
      
-       <Breadcrumb parent='Home' child='Products' child2={'Cart'}/>
+       <Breadcrumb title='Home' url="/" breadcrumbs={breadcrumbs}/>
         <div>
             <main className="grid min-h-full w-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
           <div className="text-center">
@@ -106,7 +109,7 @@ const Cart = () => {
   return (
     <div className='rounded-lg bg-gray-100 pb-5'>
     <div className="mx-auto max-w-7xl px-4"> 
-       <Breadcrumb parent='Home' child='Products' child2='Cart'/>
+       <Breadcrumb title='Home' />
     <div className="flex shadow-md my-10">
       <div className="w-3/4 bg-white px-10 py-10">
         <div className="flex justify-between border-b pb-8">

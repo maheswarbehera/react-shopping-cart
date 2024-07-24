@@ -5,6 +5,9 @@ import Breadcrumb from '../Breadcrumbs';
 import Loading from '../Loading';
 function ProductDetail() {
   
+  const breadcrumbs = [
+    { title: 'Product', url: '/products' }, 
+  ];
   const {id} = useParams()
   const navigate = useNavigate();
   const [product,setProduct] = useState({});
@@ -69,7 +72,7 @@ function ProductDetail() {
   
  <section className="text-gray-600 body-font overflow-hidden">
  <div className="container px-5 pb-24 mx-auto">
-   <Breadcrumb parent='Home' child='Product' child2={product.title}/>
+   <Breadcrumb title="Home" url='/' subTitle={product.title} subUrl={product.id} breadcrumbs={breadcrumbs}/>
    <div className="lg:w-4/5 mx-auto flex flex-wrap">
      <img alt={product.title} className="lg:w-1/2 w-full lg:h-auto h-64 max-h-[600px] object-contain object-center rounded" src={product.image}/>
      <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
