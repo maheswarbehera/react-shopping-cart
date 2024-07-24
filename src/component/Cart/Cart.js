@@ -109,7 +109,7 @@ const Cart = () => {
   return (
     <div className='rounded-lg bg-gray-100 pb-5'>
     <div className="mx-auto max-w-7xl px-4"> 
-       <Breadcrumb title='Home' />
+    <Breadcrumb title='Home' url="/" breadcrumbs={breadcrumbs}/>
     <div className="flex shadow-md my-10">
       <div className="w-3/4 bg-white px-10 py-10">
         <div className="flex justify-between border-b pb-8">
