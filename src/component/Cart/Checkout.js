@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 import Breadcrumb from '../Breadcrumbs';
 
 function Checkout() {
-
+  const breadcrumbs = [
+    // {title: 'Home', url: '/'},
+    {title: 'Checkout', url: '/checkout'}
+  ]
     const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleCheckout = () => {
@@ -38,7 +41,7 @@ function Checkout() {
  <div className='rounded-lg pb-5 bg-slate-100 py-2'>
     <div className="mx-auto max-w-7xl px-4">
         <div className="mb-8 flex" aria-label="Breadcrumb">
-        <Breadcrumb parent='Home' child='Cart' child2='Checkout'/>
+        <Breadcrumb title='Home' url="/" breadcrumbs={breadcrumbs}/>
         </div>
         
         {/* Form */}
